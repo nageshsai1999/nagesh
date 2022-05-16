@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <div class="row d-flex align-items-center mt-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 mt-4">
+            <div class="card border border-rounded p-3 shadow mt-4">
+                <h3 class="text-center">Login</h3>
+                <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" formControlName="email">
+                        <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger p-2 mt-1">
+                            <div *ngIf="f['email'].errors && f['email'].errors['required']">email is required.</div>
+                            <div *ngIf="f['email'].errors && f['email'].errors['email']">Please enter Valid Email</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="password">
+                        <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger p-2 mt-1">
+                            <div *ngIf="f['password'].errors && f['password'].errors['required']">password is required.</div>
+                            <div *ngIf="f['password'].errors && f['password'].errors['minlength']">password should be 8 character.</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

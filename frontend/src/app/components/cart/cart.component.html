@@ -1,0 +1,59 @@
+<div class="container" *ngIf="cartItem">
+    <div class="row mt-3">
+        <div class="col-md-8" >
+            <div class="card shadow mb-3" *ngFor="let item of cartItem; let i=index">
+                <div class="row p-3">
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="{{item.md_imgurl}}" alt="pizza">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="fw-bold">{{item.md_name}}</h3>
+                        <div class="d-flex align-items-center justify-content-between">
+                           
+                            <span class="">🕑 {{item.md_cooktime}} min</span>
+                        </div>
+                        <div class="mb-2">
+                            <span class="badge rounded-pill bg-warning text-dark me-1">sandwich</span>
+                            <span class="badge rounded-pill bg-warning text-dark me-1">fast food</span>
+                            <span class="badge rounded-pill bg-warning text-dark me-1">food</span>
+                        </div>
+                        <h5><span class="badge bg-danger fw-bold mb-0 mt-2">{{item.md_price | currency:"USD"}}</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- <select #quantitySelect class="form-select" aria-label="Default select example">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select> -->
+                        <button class="btn btn-danger mt-3 justify-content-end" (click)="removeCartItem(item)">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 shadow">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Transaction code</span>
+                        <p class="mb-0 h6 fw-light">AB12365E</p>
+                    </div>
+                    <div class="input-group mt-2">
+                        <input class="form-control form-control" placeholder="COUPON CODE">
+                        <button type="button" class="btn btn-danger">Apply</button>
+                    </div>
+
+                </div>
+                <h3> Total Count : {{cartItem.length}}</h3>
+                <h3> Total Price : {{getSum(cartItem)}}
+
+                </h3>
+                <button class="btn btn-danger mt-3" routerLink="/checkout">Proceed to Check Out</button>
+
+            </div>
+        </div>
+    </div>
+</div>

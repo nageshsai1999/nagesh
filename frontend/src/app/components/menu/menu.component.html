@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mt-3" *ngFor="let item of itemsData; let i = index">
+            <div class="card h-100 hovereffect">
+                <a class="text-decoration-none">
+                    <img src="{{item.md_imgurl}}"
+                        class="card-img-top img-fluid" alt="{{item.md_name}}">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="card-title fw-bold mb-0">{{item.md_name}}</h5>
+                            <span class="wishlist">
+                                <span class="text-danger" [ngClass]="item.md_wishlist=== 1 ? 'text-danger' : 'text-black' ">♥</span>
+                            </span>
+                        </div>
+                        <div class="text-center">
+                        <star-rating [value]="item.md_rating" [totalstars]="5" checkedcolor="red" uncheckedcolor="black" size="24px"
+                            [readonly]="false" (rate)="onRate($event)"></star-rating></div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5><span class="badge bg-danger fw-bold mb-0">{{item.md_price | currency:"USD"}}</span></h5>
+                            <span class="">🕑 {{item.md_cooktime}} min</span>
+                        </div>
+                        <span class="badge rounded-pill bg-warning text-dark me-1">paneer</span>
+                        <span class="badge rounded-pill bg-warning text-dark me-1">fast food</span>
+                        <span class="badge rounded-pill bg-warning text-dark me-1">food</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-danger w-100" *ngIf="isLoginUser" (click)="addToCart(item)">Add To Cart</button>
+                        <small class="text-center text-danger fw-bold text-uppercase" *ngIf="!isLoginUser">Please Login For Add to Cart</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
